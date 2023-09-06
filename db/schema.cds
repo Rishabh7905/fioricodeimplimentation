@@ -8,7 +8,7 @@ using {
  } from './master-data';
 
 namespace sap.fe.cap.travel;
-
+// Added comments
 entity Travel : managed {
   key TravelUUID : String(30);
   TravelID       : Integer @readonly default 0 @Common.Text: Description;
