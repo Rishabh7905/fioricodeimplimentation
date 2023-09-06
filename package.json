@@ -86,8 +86,5 @@
     "testTimeout": 20000
   },
   "license": "SAP SAMPLE CODE LICENSE",
-  "private": true,
-  "sapux": [
-    "app/anubhavflexapp"
-  ]
+  "private": true
 }
