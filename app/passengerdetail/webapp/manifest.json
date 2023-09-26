@@ -1,0 +1,207 @@
+{
+    "_version": "1.49.0",
+    "sap.app": {
+        "id": "passengerdetail",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:lrop",
+            "version": "1.10.6",
+            "toolsId": "7b67e451-e405-4eef-a9fa-525f1f29e9eb"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/processor/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "4.0"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.118.0",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.ushell": {},
+                "sap.fe.templates": {},
+                "sap.f": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "passengerdetail.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "synchronizationMode": "None",
+                    "operationMode": "Server",
+                    "autoExpandSelect": true,
+                    "earlyRequests": true
+                }
+            },
+            "@i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties"
+            }
+        },
+        "resources": {
+            "css": []
+        },
+        "routing": {
+            "config": {
+                "flexibleColumnLayout": {
+                    "defaultTwoColumnLayoutType": "TwoColumnsBeginExpanded",
+                    "defaultThreeColumnLayoutType": "ThreeColumnsMidExpanded"
+                },
+                "routerClass": "sap.f.routing.Router"
+            },
+            "routes": [
+                {
+                    "pattern": ":?query:",
+                    "name": "BookingList",
+                    "target": [
+                        "BookingList"
+                    ]
+                },
+                {
+                    "pattern": "Booking({key}):?query:",
+                    "name": "BookingObjectPage",
+                    "target": [
+                        "BookingList",
+                        "BookingObjectPage"
+                    ]
+                },
+                {
+                    "pattern": "Booking({key})/to_BookSupplement({key2}):?query:",
+                    "name": "BookingSupplementObjectPage",
+                    "target": [
+                        "BookingList",
+                        "BookingObjectPage",
+                        "BookingSupplementObjectPage"
+                    ]
+                }
+            ],
+            "targets": {
+                "BookingList": {
+                    "type": "Component",
+                    "id": "BookingList",
+                    "name": "sap.fe.templates.ListReport",
+                    "options": {
+                        "settings": {
+                            "entitySet": "Booking",
+                            "enhanceI18n": "i18n/rish.properties",
+                            "navigation": {
+                                "Booking": {
+                                    "detail": {
+                                        "route": "BookingObjectPage"
+                                    }
+                                }
+                            },
+                            "controlConfiguration": {
+                                "@com.sap.vocabularies.UI.v1.LineItem": {
+                                    "actions": {
+                                        "11": {
+                                            "press": "passengerdetail.ext.controller.Reject.rejected",
+                                            "visible": true,
+                                            "enabled": true,
+                                            "requiresSelection": false,
+                                            "text": "reject"
+                                        }
+                                    }
+                                }
+                            },
+                            "hideFilterBar": false
+                        }
+                    },
+                    "controlAggregation": "beginColumnPages",
+                    "contextPattern": ""
+                },
+                "BookingObjectPage": {
+                    "type": "Component",
+                    "id": "BookingObjectPage",
+                    "name": "sap.fe.templates.ObjectPage",
+                    "options": {
+                        "settings": {
+                            "editableHeaderContent": false,
+                            "entitySet": "Booking",
+                            "navigation": {
+                                "to_BookSupplement": {
+                                    "detail": {
+                                        "route": "BookingSupplementObjectPage"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "controlAggregation": "midColumnPages",
+                    "contextPattern": "/Booking({key})"
+                },
+                "BookingSupplementObjectPage": {
+                    "type": "Component",
+                    "id": "BookingSupplementObjectPage",
+                    "name": "sap.fe.templates.ObjectPage",
+                    "options": {
+                        "settings": {
+                            "editableHeaderContent": false,
+                            "entitySet": "BookingSupplement"
+                        }
+                    },
+                    "controlAggregation": "endColumnPages",
+                    "contextPattern": "/Booking({key})/to_BookSupplement({key2})"
+                }
+            }
+        },
+        "extends": {
+            "extensions": {
+                "sap.ui.controllerExtensions": {}
+            }
+        },
+        "rootView": {
+            "viewName": "sap.fe.templates.RootContainer.view.Fcl",
+            "type": "XML",
+            "async": true,
+            "id": "appRootView"
+        }
+    },
+    "sap.fiori": {
+        "registrationIds": [],
+        "archeType": "transactional"
+    }
+}

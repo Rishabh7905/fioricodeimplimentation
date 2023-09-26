@@ -1,0 +1,23 @@
+<mvc:View xmlns:form="sap.ui.layout.form" controllerName="projectrishabh.controller.View2"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page  title="Page2">
+    <form:SimpleForm >
+    <Label text="createdAt">
+    </Label>
+    <Text text="{createdAt}" ></Text>
+     <Label text="BeginDate">
+    </Label>
+    <Text text="{BeginDate}" ></Text>
+     <Label text="EndDate">
+    </Label>
+    <Text text="{EndDate}" ></Text>
+     <Label text="TotalPrice">
+    </Label>
+    <Text text="{TotalPrice}" ></Text>
+    </form:SimpleForm>
+    </Page>
+    
+
+</mvc:View>

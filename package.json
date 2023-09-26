@@ -30,7 +30,11 @@
     "start": "cds run",
     "test": "jest --runInBand",
     "watch-anubhavflexapp": "cds watch --open anubhavflexapp/webapp/index.html?sap-ui-xx-viewCache=false",
-    "watch-travel": "cds watch --open travel/webapp/index.html?sap-ui-xx-viewCache=false"
+    "watch-travel": "cds watch --open travel/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-projectrishabh": "cds watch --open projectrishabh/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-passengerdetail": "cds watch --open passengerdetail/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-project123": "cds watch --open project123/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-project1234": "cds watch --open project1234/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "cds": {
     "requires": {
@@ -87,5 +91,10 @@
     "testTimeout": 20000
   },
   "license": "SAP SAMPLE CODE LICENSE",
-  "private": true
+  "private": true,
+  "sapux": [
+    "app/passengerdetail",
+    "app/project123",
+    "app/project1234"
+  ]
 }

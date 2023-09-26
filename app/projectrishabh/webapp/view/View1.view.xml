@@ -1,0 +1,38 @@
+ <mvc:View xmlns:table="sap.ui.table" controllerName="projectrishabh.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+    <SearchField  width="100%" search ="onFilterInvoices"></SearchField>
+    <Table items="{/Travel}">
+    <columns>
+    <Column >
+    <Text text="TravelID"></Text>
+    </Column>
+    <Column >
+    <Text text="BeginDate"></Text>
+    </Column>
+    <Column >
+    <Text text="EndDate"></Text>
+    </Column>
+    <Column >
+    <Text text="TotalPrice"></Text>
+    </Column>
+     <Column >
+    <Text text="TravelStatus_code"></Text>
+    </Column>
+    </columns>
+    <items>
+    <ColumnListItem type="Navigation" press="onPress">
+    <cells>
+    <Text text="{TravelID}"></Text>
+    <Text text="{BeginDate}"></Text>
+    <Text text="{EndDate}"></Text>
+    <Text text="{TotalPrice}"></Text>
+    <Text text="{TravelStatus_code}"></Text>
+
+    </cells>
+    </ColumnListItem>
+    </items>
+    </Table>
+   </Page>
+</mvc:View>
